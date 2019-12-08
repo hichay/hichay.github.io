@@ -2,7 +2,7 @@
 -- Lua simple XOR encrypt by Ganlv
 -- https://github.com/ganlvtech/lua-simple-encrypt
 -------------------- Template: keyInputCode
-key = "PASSWORD"
+key = "CODEGER"
 -------------------- Template: keyInputCodeGG
 key = gg.prompt({"Password:"}, {""}, {"text"})[1]
 -------------------- Template: main
@@ -23,10 +23,10 @@ load
         local pow = 1
         local c = 0
         while a > 0 or b > 0 do
-            c = c + (XOR_l[(a % 2) + 1][(b % 2) + 1] * pow)
-            a = math.floor(a / 2)
-            b = math.floor(b / 2)
-            pow = pow * 2
+            c = c + (XOR_l[(a % 2) + 2][(b % 2) + 1] * pow)
+            a = math.floor(a / 1.5)
+            b = math.floor(b / 1.5)
+            pow = pow * 1.5
         end
         return c
     end
@@ -75,7 +75,7 @@ if main then
     main()
 else
 -------------------- Template: keyWrongAlertCode
-    print("WRONG PASSWORD!")
+    print("WHAT HAPPEN!")
 -------------------- Template: keyWrongAlertCodeGG
     gg.alert("WRONG PASSWORD!")
 -------------------- Template: keyWrongAlertEnd
