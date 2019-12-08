@@ -9,10 +9,6 @@ function luaSimpleXorEncrypt(bytes, key, options = {}) {
   let code = (options.isGG ? templates.keyInputCodeGG : templates.keyInputCode)
     + templates.main
     + (options.isLua52 ? templates.load : templates.loadstring)
-    + templates.decoder
-    + shuffled.join(',')
-    + templates.decoderEnd
-    + luamin.minify(code);
 }
 
 export default luaSimpleXorEncrypt;
