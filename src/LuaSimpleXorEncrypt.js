@@ -6,7 +6,7 @@ import templates from './templates';
 
 function luaSimpleXorEncrypt(bytes, key, options = {}) {
   let encrypted = simpleXorEncrypt(bytes, utf8.encode(key));
-  let shuffled = shuffleWithKey(encrypted, key);
+  
   let code = (options.isGG ? templates.keyInputCodeGG : templates.keyInputCode)
     + templates.main
     + (options.isLua52 ? templates.load : templates.loadstring)
