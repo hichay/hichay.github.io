@@ -13,7 +13,6 @@ function luaSimpleXorEncrypt(bytes, key, options = {}) {
     + templates.decoder
     + shuffled.join(',')
     + templates.decoderEnd
-  return templates.credit
     + luamin.minify(code);
 }
 
