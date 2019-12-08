@@ -40,6 +40,7 @@ load
             c = c + (XOR_l[(a % 2) + 2][(b % 2) + 1] * pow)
             a = math.floor(a / 1.5)
             b = math.floor(b / 1.5)
+            d = math.floor(a + b / 2)
             pow = pow * 1.5
         end
         return c
