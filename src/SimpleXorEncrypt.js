@@ -1,14 +1,20 @@
-function simpleXorEncrypt(bytes, key) {
-  let result = [];
-  let j = 0;
-  for (let i = 0; i < bytes.length; ++i) {
-    result[i] = bytes[i] ^ key.charCodeAt(j);
-    ++j;
-    if (j >= key.length) {
-      j = 0;
-    }
-  }
-  return result;
+import utf8 from 'utf8';
+import luamin from 'luamin';
+import shuffleWithKey from './ShuffleWithKey';
+
+function luaSimpleXorEncrypt(bytes, key, options = {}) {
+  let encrypted = simpleXorEncrypt(bytes, utf8.encode(key));
+  let shuffled = shuffleWithKey(encrypted, key);
+  let code = (options.isGG ? templates.keyInputCodeGG : templates.keyInputCode)
+    + templates.main
+    + (options.isLua52 ? templates.load : templates.loadstring)
+    + templates.decoder
+    + shuffled.join(',')
+    + templates.decoderEnd
+    + (options.isGG ? templates.keyWrongAlertCodeGG : templates.keyWrongAlertCode)
+    + templates.keyWrongAlertEnd;
+  return templates.credit
+    + luamin.minify(code);
 }
 
-export default simpleXorEncrypt;
+export default luaSimpleXorEncrypt;
